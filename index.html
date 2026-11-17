@@ -104,7 +104,6 @@ main {
   background: var(--white);
   box-shadow: 0 0 40px #00000008;
 }
-
 .hero {
   min-height: 690px;
   display: flex;
@@ -113,10 +112,14 @@ main {
   text-align: center;
   padding: 80px 20px;
   position: relative;
-  background:
-    linear-gradient(#f8f5efbd, #f8f5efbd),
-    url('./boda2027.jpeg')
-    center/cover;
+
+  background-image:
+    linear-gradient(rgba(248,245,239,0.45), rgba(248,245,239,0.45)),
+    url("https://raw.githubusercontent.com/katashig96/invitacion-boda-2027/main/boda2027.jpeg");
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .hero::before {
