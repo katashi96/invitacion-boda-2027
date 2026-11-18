@@ -14,11 +14,13 @@
 
 <style>
 :root {
-  --cream: #f8f5ef;
-  --white: #fffefa;
-  --gold: #aa9165;
-  --dark: #4b453c;
-  --muted: #8b8174;
+  --cream: #F7F3EC;       /* marfil cálido */
+  --white: #FFFCF7;       /* blanco crema */
+  --olive: #68734F;       /* verde olivo */
+  --olive-dark: #4F5B3D;
+  --skin: #D8C2AA;        /* beige / color piel */
+  --dark: #4C523F;        /* texto verde olivo profundo */
+  --muted: #857B69;       /* texto secundario cálido */
 }
 
 * {
@@ -42,7 +44,7 @@ button { font-family: inherit; }
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: #f8f5ef;
+  background: var(--cream);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,7 +67,7 @@ button { font-family: inherit; }
 .cover-line {
   width: 65px;
   height: 1px;
-  background: var(--gold);
+  background: var(--olive);
   margin: 20px auto;
 }
 
@@ -78,13 +80,13 @@ button { font-family: inherit; }
 .cover-subtitle {
   font-size: 10px;
   letter-spacing: 4px;
-  color: var(--gold);
+  color: var(--olive);
 }
 
 .open-btn {
   margin-top: 35px;
   padding: 15px 32px;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--olive);
   background: transparent;
   color: var(--dark);
   letter-spacing: 2px;
@@ -94,8 +96,8 @@ button { font-family: inherit; }
 }
 
 .open-btn:hover {
-  background: var(--gold);
-  color: white;
+  background: var(--olive);
+  color: #FFFCF7;
 }
 
 main {
@@ -114,7 +116,7 @@ main {
   position: relative;
 
   background-image:
-    linear-gradient(rgba(248,245,239,0.45), rgba(248,245,239,0.45)),
+    linear-gradient(rgba(247,243,236,0.42), rgba(247,243,236,0.42)),
     url("https://katashi96.github.io/invitacion-boda-2027/boda2027.jpeg");
 
    background-position: center 30%;
@@ -136,20 +138,20 @@ main {
 .eyebrow {
   font-size: 10px;
   letter-spacing: 5px;
-  color: var(--gold);
+  color: var(--olive);
   margin-bottom: 35px;
 }
 
 .names {
   font: 300 clamp(48px, 11vw, 86px) 'Cormorant Garamond', serif;
   line-height: 1;
-  color: #544a3d;
+  color: var(--dark);
 }
 
 .ampersand {
   display: block;
   font: italic 36px 'Cormorant Garamond', serif;
-  color: var(--gold);
+  color: var(--olive);
   margin: 13px;
 }
 
@@ -174,7 +176,7 @@ main {
 .section-label {
   font-size: 10px;
   letter-spacing: 4px;
-  color: var(--gold);
+  color: var(--olive);
   margin-bottom: 20px;
 }
 
@@ -194,12 +196,12 @@ main {
 
 .flower {
   font-size: 27px;
-  color: var(--gold);
+  color: var(--olive);
   margin: 20px;
 }
 
 .countdown {
-  background: #f4efe6;
+  background: #EEE6DA;
   padding: 70px 15px;
   text-align: center;
 }
@@ -221,12 +223,12 @@ main {
 .time-label {
   font-size: 9px;
   letter-spacing: 2px;
-  color: var(--gold);
+  color: var(--olive);
   margin-top: 7px;
 }
 
 .event-card {
-  border: 1px solid #e4dac9;
+  border: 1px solid #D8C2AA;
   max-width: 450px;
   margin: 35px auto 0;
   padding: 35px 20px;
@@ -252,8 +254,8 @@ main {
   display: inline-block;
   margin-top: 25px;
   padding: 14px 25px;
-  background: var(--gold);
-  color: white;
+  background: var(--olive);
+  color: #FFFCF7;
   text-decoration: none;
   font-size: 10px;
   letter-spacing: 2px;
@@ -263,17 +265,17 @@ main {
 }
 
 .gold-btn:hover {
-  background: #87734f;
+  background: var(--olive-dark);
 }
 
 .rsvp {
-  background: #f4efe6;
+  background: #EEE6DA;
 }
 
 .footer {
   text-align: center;
   padding: 65px 20px;
-  background: #eee7db;
+  background: #E8DED0;
 }
 
 .footer-names {
@@ -284,7 +286,7 @@ main {
 .footer p {
   font-size: 10px;
   letter-spacing: 3px;
-  color: var(--gold);
+  color: var(--olive);
   margin-top: 18px;
 }
 
@@ -306,9 +308,9 @@ main {
   width: 43px;
   height: 43px;
   border-radius: 50%;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--olive);
   background: var(--white);
-  color: var(--gold);
+  color: var(--olive);
   cursor: pointer;
   z-index: 10;
 }
@@ -329,7 +331,7 @@ main {
     <div class="cover-line"></div>
     <div class="cover-title">César & Alexandra</div>
     <div class="cover-line"></div>
-    <p style="font-size:11px;color:#8b8174;line-height:2">
+    <p style="font-size:11px;color:var(--muted);line-height:2">
       Tenemos una historia que celebrar<br>
       y queremos compartirla contigo.
     </p>
@@ -422,7 +424,7 @@ main {
 </section>
 
 <!-- LUGAR -->
-<section class="section reveal" style="background:#faf8f3">
+<section class="section reveal" style="background:#F3EADF">
   <div class="section-label">EL LUGAR</div>
   <h2 class="section-title">Donde todo comienza</h2>
 
