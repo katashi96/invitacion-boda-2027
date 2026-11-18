@@ -481,8 +481,9 @@ main {
 </button>
 
 <!-- Música opcional: agrega tu propio archivo musica.mp3 -->
-<audio id="music" loop>
+<audio id="music" loop preload="auto">
   <source src="https://katashi96.github.io/invitacion-boda-2027/Ed%20Sheeran%20-%20Photograph.mp3" type="audio/mpeg">
+  Tu navegador no puede reproducir este audio.
 </audio>
 
 <script>
@@ -524,11 +525,23 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ABRIR INVITACIÓN
-function openInvitation() {
+async function openInvitation() {
   document.getElementById("cover").classList.add("hidden");
 
-  // El audio requiere interacción del usuario.
-  // Se puede activar después con el botón musical.
+  // El clic en "ABRIR INVITACIÓN" permite intentar iniciar la música.
+  try {
+    await music.play();
+    playing = true;
+    musicBtn.textContent = "Ⅱ";
+    musicBtn.setAttribute("aria-label", "Pausar música");
+  } catch (error) {
+    // Si el navegador o el archivo impiden reproducirla,
+    // la persona puede intentarlo con el botón musical.
+    playing = false;
+    musicBtn.textContent = "♫";
+    musicBtn.setAttribute("aria-label", "Reproducir música");
+    console.warn("No se pudo iniciar el audio:", error);
+  }
 }
 
 // ANIMACIONES AL DESPLAZARSE
@@ -551,20 +564,34 @@ const musicBtn = document.getElementById("musicBtn");
 let playing = false;
 
 async function toggleMusic() {
-  if (!playing) {
+  if (music.paused) {
     try {
       await music.play();
-      playing = true;
-      musicBtn.textContent = "♫";
     } catch (error) {
-      alert("Agrega el archivo musica.mp3 a tu repositorio para escuchar música.");
+      alert("No se pudo reproducir la canción. Comprueba que el archivo MP3 esté en la carpeta principal del repositorio y que su nombre coincida exactamente.");
+      console.error("Error al reproducir el audio:", error);
     }
   } else {
     music.pause();
-    playing = false;
-    musicBtn.textContent = "♫";
   }
 }
+
+// Mantiene el botón sincronizado con el estado real del reproductor.
+music.addEventListener("play", () => {
+  playing = true;
+  musicBtn.textContent = "Ⅱ";
+  musicBtn.setAttribute("aria-label", "Pausar música");
+});
+
+music.addEventListener("pause", () => {
+  playing = false;
+  musicBtn.textContent = "♫";
+  musicBtn.setAttribute("aria-label", "Reproducir música");
+});
+
+music.addEventListener("error", () => {
+  console.error("No se encontró o no se pudo cargar el MP3:", music.currentSrc);
+});
 
 // CONFIRMACIÓN POR WHATSAPP
 // CAMBIA ESTE NÚMERO POR EL DE LOS NOVIOS.
